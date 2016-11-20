@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		94381FD51DE1F5AE001D913F /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 94381FD41DE1F5AE001D913F /* main.c */; };
+		94381FDE1DE1FB18001D913F /* priority-readers-and-writers.c in Sources */ = {isa = PBXBuildFile; fileRef = 94381FDC1DE1FB18001D913F /* priority-readers-and-writers.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,7 +24,8 @@
 
 /* Begin PBXFileReference section */
 		94381FD11DE1F5AE001D913F /* Multithread_Readers_And_Writers */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Multithread_Readers_And_Writers; sourceTree = BUILT_PRODUCTS_DIR; };
-		94381FD41DE1F5AE001D913F /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		94381FDC1DE1FB18001D913F /* priority-readers-and-writers.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "priority-readers-and-writers.c"; sourceTree = "<group>"; };
+		94381FDD1DE1FB18001D913F /* priority-readers-and-writers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "priority-readers-and-writers.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +58,8 @@
 		94381FD31DE1F5AE001D913F /* Multithread_Readers_And_Writers */ = {
 			isa = PBXGroup;
 			children = (
-				94381FD41DE1F5AE001D913F /* main.c */,
+				94381FDC1DE1FB18001D913F /* priority-readers-and-writers.c */,
+				94381FDD1DE1FB18001D913F /* priority-readers-and-writers.h */,
 			);
 			path = Multithread_Readers_And_Writers;
 			sourceTree = "<group>";
@@ -119,7 +121,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				94381FD51DE1F5AE001D913F /* main.c in Sources */,
+				94381FDE1DE1FB18001D913F /* priority-readers-and-writers.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -246,6 +248,7 @@
 				94381FDA1DE1F5AE001D913F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
