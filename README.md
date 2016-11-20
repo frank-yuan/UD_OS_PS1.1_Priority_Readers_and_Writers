@@ -1,5 +1,7 @@
 #Priority Readers and Writers
 
+Udacity Operating System Introduction Problem Set 1 Task 1
+
 Write a multi-threaded C program that gives readers priority over writers concerning a shared (global) variable. Essentially, if any readers are waiting, then they have priority over writer threads -- writers can only write when there are no readers. This program should adhere to the following constraints:
 
 * Multiple readers/writers must be supported (5 of each is fine)
