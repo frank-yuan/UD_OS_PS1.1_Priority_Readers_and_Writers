@@ -25,7 +25,7 @@ void *reader(void *arg){
     int threadId = *((int*)arg);
     
     for (int i = 0; i < READ_TIMES; ++i){
-        usleep(1000 * (rand() % READERS_COUNT));
+        usleep(1000 * (rand() % (READERS_COUNT + WRITERS_COUNT)));
         
         // Wait for conditional variables
         pthread_mutex_lock(&gSharedValueLock);
@@ -39,7 +39,7 @@ void *reader(void *arg){
         pthread_mutex_unlock(&gSharedValueLock);
         
         // Perform read and output
-        printf(">>>>> Reader ID %d\tReaders: %d\tValue: %u\n", threadId, readCount, gSharedValue);
+        printf("%u\t\tReader ID %d\tReaders: %d\n", gSharedValue, threadId, readCount);
         
         pthread_mutex_lock(&gSharedValueLock);{
             --gReaderCount;
@@ -55,7 +55,7 @@ void *writer(void *arg){
     int threadId = *((int*)arg);
     
     for (int i = 0; i < WRITE_TIMES; ++i){
-        usleep(1000 * (rand() % WRITERS_COUNT));
+        usleep(1000 * (rand() % (WRITERS_COUNT  + READERS_COUNT)));
         
         pthread_mutex_lock(&gSharedValueLock);
         while (gReaderCount != 0) {
@@ -65,7 +65,7 @@ void *writer(void *arg){
         pthread_mutex_unlock(&gSharedValueLock);
         
         // Perform read and output
-        printf("\t<<<<< Writer ID %d\tReaders: %d\tValue: %u\n", threadId, gReaderCount < 0 ? 0 : gReaderCount, ++gSharedValue);
+        printf("%u <<<<\tWriter ID %d\tReaders: %d\n", ++gSharedValue, threadId, gReaderCount < 0 ? 0 : gReaderCount);
         
         pthread_mutex_lock(&gSharedValueLock); {
             ++gReaderCount;
