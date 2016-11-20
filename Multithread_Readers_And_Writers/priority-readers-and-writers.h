@@ -12,9 +12,9 @@
 #include <stdio.h>
 
 #define READERS_COUNT 10
-#define WRITERS_COUNT 2
+#define WRITERS_COUNT 5
 #define READ_TIMES 10
-#define WRITE_TIMES 8
+#define WRITE_TIMES 5
 
 
 void *reader(void *arg);

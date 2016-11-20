@@ -39,21 +39,23 @@ void *reader(void *arg){
         pthread_mutex_unlock(&gSharedValueLock);
         
         // Perform read and output
-        printf("%u\t\tReader ID %d\tReaders: %d\n", gSharedValue, threadId, readCount);
+        printf("%u\t\tReader ID %d\tReaders: %d\tWaitingReaders: %d\n", gSharedValue, threadId, readCount, gWaitingReaderCount);
         
         pthread_mutex_lock(&gSharedValueLock);{
             --gReaderCount;
-            pthread_cond_signal(&gWriteCondition);
+            // NOTICE: Add condition to avoid unnecessary signal
+            if (gReaderCount == 0) {
+                pthread_cond_signal(&gWriteCondition);
+            }
         }
         pthread_mutex_unlock(&gSharedValueLock);
-        
     }
-    return (void*)threadId;
+    
+    pthread_exit((void*)threadId);
 }
 
 void *writer(void *arg){
     int threadId = *((int*)arg);
-    
     for (int i = 0; i < WRITE_TIMES; ++i){
         usleep(1000 * (rand() % (WRITERS_COUNT  + READERS_COUNT)));
         
@@ -65,13 +67,22 @@ void *writer(void *arg){
         pthread_mutex_unlock(&gSharedValueLock);
         
         // Perform read and output
-        printf("%u <<<<\tWriter ID %d\tReaders: %d\n", ++gSharedValue, threadId, gReaderCount < 0 ? 0 : gReaderCount);
+        
+        // Simulate a time-consuming writing operation
+        usleep(1000 * (rand() % (WRITERS_COUNT  + READERS_COUNT)));
+        printf("%u <<<<\tWriter ID %d\tReaders: %d\tWaitingReaders: %d\n", ++gSharedValue, threadId, gReaderCount < 0 ? 0 : gReaderCount, gWaitingReaderCount);
         
         pthread_mutex_lock(&gSharedValueLock); {
             ++gReaderCount;
-            pthread_cond_signal(&gReadCondition);
+            
+            // NOTICE: Give waiting readers proirity
+            if (gWaitingReaderCount > 0) {
+                pthread_cond_broadcast(&gReadCondition);
+            } else {
+                pthread_cond_signal(&gWriteCondition);
+            }
         }
         pthread_mutex_unlock(&gSharedValueLock);
     }
-    return (void*)threadId;
+    pthread_exit((void*)threadId);
 }
