@@ -11,4 +11,12 @@
 
 #include <stdio.h>
 
+#define READERS_COUNT 5
+#define WRITERS_COUNT 5
+#define READ_TIMES 5
+#define WRITE_TIMES 5
+
+
+void *reader(void *arg);
+void *writer(void *arg);
 #endif /* priority_readers_and_writers_h */

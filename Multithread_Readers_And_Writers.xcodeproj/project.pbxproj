@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		94381FDE1DE1FB18001D913F /* priority-readers-and-writers.c in Sources */ = {isa = PBXBuildFile; fileRef = 94381FDC1DE1FB18001D913F /* priority-readers-and-writers.c */; };
+		94381FE01DE21FC4001D913F /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 94381FDF1DE21FC4001D913F /* main.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,6 +27,7 @@
 		94381FD11DE1F5AE001D913F /* Multithread_Readers_And_Writers */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Multithread_Readers_And_Writers; sourceTree = BUILT_PRODUCTS_DIR; };
 		94381FDC1DE1FB18001D913F /* priority-readers-and-writers.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "priority-readers-and-writers.c"; sourceTree = "<group>"; };
 		94381FDD1DE1FB18001D913F /* priority-readers-and-writers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "priority-readers-and-writers.h"; sourceTree = "<group>"; };
+		94381FDF1DE21FC4001D913F /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 			children = (
 				94381FDC1DE1FB18001D913F /* priority-readers-and-writers.c */,
 				94381FDD1DE1FB18001D913F /* priority-readers-and-writers.h */,
+				94381FDF1DE21FC4001D913F /* main.c */,
 			);
 			path = Multithread_Readers_And_Writers;
 			sourceTree = "<group>";
@@ -121,6 +124,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94381FE01DE21FC4001D913F /* main.c in Sources */,
 				94381FDE1DE1FB18001D913F /* priority-readers-and-writers.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
